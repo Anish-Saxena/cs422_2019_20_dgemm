@@ -3,7 +3,7 @@
 #include<time.h>
 #include<x86intrin.h>
 
-#define UNROLL (32)
+#define UNROLL (64)
 
 void dgemm(int n, double* A, double* B, double* C){
 	for(int i=0;i<n;i+=UNROLL*4){
@@ -26,7 +26,7 @@ void dgemm(int n, double* A, double* B, double* C){
 int main(){
 	srand((unsigned int)time(NULL));
 	float a = 32768.0;
-	int n = 128;
+	int n = 32;
 	double *A = (double *)malloc(sizeof(double)*n*n);
 	double *B = (double *)malloc(sizeof(double)*n*n);
 	double *C = (double *)malloc(sizeof(double)*n*n);

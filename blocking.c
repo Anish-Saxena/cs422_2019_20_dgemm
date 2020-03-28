@@ -3,8 +3,8 @@
 #include<time.h>
 #include<x86intrin.h>
 
-#define UNROLL (32)
-#define BLOCKSIZE 256
+#define UNROLL (4)
+#define BLOCKSIZE 512
 
 void do_block(int n, int si, int sj, int sk, double* A, double *B, double *C){
 	for(int i=si;i<si+BLOCKSIZE;i+=UNROLL*4)
@@ -34,7 +34,7 @@ void dgemm(int n, double* A, double* B, double* C){
 int main(){
 	srand((unsigned int)time(NULL));
 	float a = 32768.0;
-	int n = 128;
+	int n = 32;
 	double *A = (double *)malloc(sizeof(double)*n*n);
 	double *B = (double *)malloc(sizeof(double)*n*n);
 	double *C = (double *)malloc(sizeof(double)*n*n);
